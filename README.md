@@ -1,6 +1,15 @@
 # FixedStepNetworking
 
-A first attempt at fixed step simulation and networking in UE4.  Provides a standard way to predict autonomous proxy clients and interpolate simulated clients while maintaining full server authority.  The system automatically handles gathering inputs/state data, packing then replicating to the authority, running inputs, then replicating back result data to all clients.  Autonomous clients will predict their own result and automatically handle error correct/rollback/reprediction when they receive state data.  Simulated clients will automatically interpolate state data to ensure smooth looking movement while only receiving limited snapshots of data.
+A first attempt at fixed step simulation and networking in UE4.  Provides a standard way to predict autonomous proxy clients and interpolate simulated clients while maintaining full server authority.  
+
+The system automatically handles gathering inputs/state data, packing then replicating to the authority, running inputs, then replicating back result data to all clients.
+
+FixedStep State/Input variables can exist on an actor or any components within the actor, and by implementing a single interface, the FixedStepComponent will be able to gather inputs and state data from any number of actor+component combos without needing to write any additional code to glue them together.
+
+Autonomous clients will predict their own result and automatically handle error correct/rollback/reprediction when they receive state data.  
+
+Simulated clients will automatically interpolate state data to ensure smooth looking movement while only receiving limited snapshots of data.
+
 
 Basics:
 
